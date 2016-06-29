@@ -19,6 +19,11 @@ public class Node {
         childBranches=new ArrayList<Node>();
     }
 
+    public Node(Node rootNode) {
+        this.rootNode = rootNode;
+        childBranches=new ArrayList<Node>();
+    }
+
     public char getDataChar() {
         return dataChar;
     }
@@ -47,13 +52,13 @@ public class Node {
         return isLeaf;
     }
 
-    public void setIsLeaf(boolean isLeaf) {
-        this.isLeaf = isLeaf;
+    public void markAsLeaf() {
+        this.isLeaf = true;
     }
 
     public void addNode(Node childNode){
         if(childBranches==null)
-            childBranches=new ArrayList<>();
+            childBranches=new ArrayList<Node>();
         childBranches.add(childNode);
     }
 }
