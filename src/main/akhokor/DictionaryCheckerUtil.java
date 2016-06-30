@@ -5,14 +5,15 @@ import main.akhokor.model.Node;
 
 import java.util.List;
 
-public class DictionaryChecker {
+public class DictionaryCheckerUtil {
 
     public String getWordByLeafNode(Node leaf){
         String result="";
         Node itemNode=leaf;
-        while (itemNode!=null)
+        while (itemNode.getRootNode()!=null)
         {
             result+= itemNode.getDataChar();
+            itemNode=itemNode.getRootNode();
         }
         return result;
     }
@@ -34,7 +35,7 @@ public class DictionaryChecker {
         this.bohr = bohr;
     }
 
-    public DictionaryChecker(Bohr bohr) {
+    public DictionaryCheckerUtil(Bohr bohr) {
         this.bohr = bohr;
     }
 
