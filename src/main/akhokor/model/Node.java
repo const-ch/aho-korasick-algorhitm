@@ -1,4 +1,4 @@
-package akhokor.model;
+package main.akhokor.model;
 
 import java.util.ArrayList;
 import java.util.List;

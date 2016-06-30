@@ -1,6 +1,6 @@
-package akhokor.bohr;
+package main.akhokor.bohr;
 
-import akhokor.model.Node;
+import main.akhokor.model.Node;
 
 /**
  * Created by User on 28.06.16.
