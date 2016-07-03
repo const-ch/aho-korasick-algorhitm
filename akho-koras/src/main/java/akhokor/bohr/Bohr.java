@@ -7,7 +7,7 @@ import akhokor.model.Node;
  */
 public class Bohr {
 
-    private Node rootNode;
+    private Node rootNode = new Node(null);
 
     public Bohr(Node rootNode) {
         this.rootNode = rootNode;
@@ -20,7 +20,7 @@ public class Bohr {
         }
     }
 
-    public Node getNodeForChar(char targetChar,Node parentNode, boolean isLeaf){
+    private Node getNodeForChar(char targetChar,Node parentNode, boolean isLeaf){
         for(Node chilNode : parentNode.getChildBranches()){
             if(chilNode.getDataChar()==targetChar){
                 if(isLeaf)
@@ -28,7 +28,7 @@ public class Bohr {
                 return chilNode;
             }
         }
-        Node nextNode = new Node(rootNode,targetChar,isLeaf);
+        Node nextNode = new Node(parentNode,targetChar,isLeaf);
         parentNode.addNode(nextNode);
         return nextNode;
     }
