@@ -29,14 +29,16 @@ public class DictionaryCheckerUtilTest extends TestCase {
         Bohr bohr = new Bohr( new Node(null,'0',false));
         bohr.addWord("kol");
         bohr.addWord("kol2");
-        bohr.addWord("j");
+        bohr.addWord("kolpak");
+        bohr.addWord("pakistan");
+        bohr.addWord("ggj");
         bohr.addWord("a");
 
         DictionaryCheckerUtil dictionaryCheckerUtil = new DictionaryCheckerUtil(bohr);
 
-        List<String> resList = Arrays.asList("a","kol","kol2", "j");
+        List<String> resList = Arrays.asList("ggj");
 
-        assertEquals(resList, dictionaryCheckerUtil.checkTextForWords("akol2wjk"));
+        assertEquals(resList, dictionaryCheckerUtil.checkTextForWords("ggjs"));
 
     }
 }

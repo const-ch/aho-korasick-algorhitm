@@ -22,21 +22,22 @@ public class DictionaryCheckerUtil {
     public List<String> checkTextForWords(String text){
         List<String> resWordsList = new ArrayList<String>();
         char currentChar;
-        Node iterNode=bohr.getRootNode().getChildForChar(text.charAt(0));
-        int i= 0;
+        Node iterNode = bohr.getRootNode().getChildForChar(text.charAt(0));
+        iterNode=iterNode==null ? bohr.getRootNode() : iterNode;
+        int i= -1;
         do{
-            currentChar = text.charAt(i);
+            i++;
             if(iterNode.isLeaf())
                 resWordsList.add(getWordByLeafNode(iterNode));
             if(iterNode.getChildBranches().isEmpty())
             {
                 iterNode=bohr.getRootNode();
             }else {
+                currentChar = text.charAt(i);
                 iterNode=iterNode.getChildForChar(currentChar);
                 if(iterNode==null)
                     iterNode=bohr.getRootNode();
             }
-            i++;
         }while (i<text.length());
         return resWordsList;
     }
