@@ -8,19 +8,19 @@ import java.util.List;
  */
 public class Node {
     private List<Node> childBranches;
-    private Node rootNode;
+    private Node parentNode;
     private boolean isLeaf=false;
     private char dataChar;
 
-    public Node(Node rootNode, char dataChar,boolean isLeaf) {
-        this.rootNode = rootNode;
+    public Node(Node parentNode, char dataChar,boolean isLeaf) {
+        this.parentNode = parentNode;
         this.dataChar = dataChar;
         this.isLeaf = isLeaf;
         childBranches=new ArrayList<Node>();
     }
 
-    public Node(Node rootNode) {
-        this.rootNode = rootNode;
+    public Node(Node parentNode) {
+        this.parentNode = parentNode;
         childBranches=new ArrayList<Node>();
     }
 
@@ -40,12 +40,12 @@ public class Node {
         this.childBranches = childBranches;
     }
 
-    public Node getRootNode() {
-        return rootNode;
+    public Node getParentNode() {
+        return parentNode;
     }
 
-    public void setRootNode(Node rootNode) {
-        this.rootNode = rootNode;
+    public void setParentNode(Node parentNode) {
+        this.parentNode = parentNode;
     }
 
     public boolean isLeaf() {
@@ -60,5 +60,17 @@ public class Node {
         if(childBranches==null)
             childBranches=new ArrayList<Node>();
         childBranches.add(childNode);
+    }
+
+    public Node getChildForChar(char c){
+        return childBranches.stream().filter(
+                    branch->c==branch.getDataChar())
+                        .findFirst().orElse(null);
+    }
+
+    @Override
+    public String toString() {
+        return dataChar +
+                (isLeaf() ? " : leaf" : "");
     }
 }
