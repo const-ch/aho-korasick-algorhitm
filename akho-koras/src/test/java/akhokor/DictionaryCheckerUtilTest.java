@@ -26,17 +26,17 @@ public class DictionaryCheckerUtilTest extends TestCase {
 
     @Test
     public void testCheckTextForWords(){
-        Bohr bohr = new Bohr(new Node(null));
+        Bohr bohr = new Bohr( new Node(null,'0',false));
         bohr.addWord("kol");
-        bohr.addWord("fuck");
+        bohr.addWord("kol2");
         bohr.addWord("j");
         bohr.addWord("a");
 
         DictionaryCheckerUtil dictionaryCheckerUtil = new DictionaryCheckerUtil(bohr);
 
-        List<String> resList = Arrays.asList("a","kol","fuck","j");
+        List<String> resList = Arrays.asList("a","kol","kol2", "j");
 
-        assertEquals(resList,dictionaryCheckerUtil.checkTextForWords("akol228fuckj"));
+        assertEquals(resList, dictionaryCheckerUtil.checkTextForWords("akol2wjk"));
 
     }
 }
